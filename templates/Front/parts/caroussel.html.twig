@@ -59,7 +59,7 @@
                 <div class="text-center">
                     <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
                 </div>
-                <div class="position-relative mb-5">
+                <div class="position-relative text-center mb-5">
                     {% if car.image.name is defined %}
                         <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
                     {% else %}
@@ -86,9 +86,9 @@
                     <div class="text-center">
                         <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
                     </div>
-                    <div class="position-relative mb-5">
+                    <div class="position-relative text-center mb-5">
                         {% if car.image.name is defined %}
-                            <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
+                            <img class="img-fluid rounded-3 mb-3 " src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
                         {% else %}
                             <p>Pas d'images</p>
                         {% endif %}
