@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <style>
+        .full {
+            position: relative;
+            min-height: 90vh;
+        }
+    </style>
+    <div class="container full p-5">
+
+        <div class="row">
+            <h1>Modifier un véhicule</h1>
+            <div class="col-sm-6">
+                {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+
+                {{ form_row(form.name) }}
+                {{ form_row(form.Places) }}
+                {{ form_row(form.luggage) }}
+
+            </div>
+
+            <div class="col-sm-6">
+                {{ form_row(form.fuel) }}
+                {{ form_row(form.gearBox) }}
+                {{ form_row(form.type) }}
+
+            </div>
+
+        </div>
+        {{ form_row(form.Image) }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-success m-5">Valider</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

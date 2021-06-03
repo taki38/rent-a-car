@@ -8,6 +8,7 @@
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
             <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
             <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         {% endblock %}
 
@@ -31,6 +32,24 @@
             </div>
         {% endfor %}
         {% block body %}
+        {% endblock %}
+        {% block footer %}
+
+            <!-- Footer-->
+            <footer class="bg-dark py-4 mt-auto">
+                <div class="container px-5">
+                    <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                        <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Takieddine SEHAILIA 2021</div></div>
+                        <div class="col-auto">
+                            <a class="link-light small" href="#!">Privacy</a>
+                            <span class="text-white mx-1">&middot;</span>
+                            <a class="link-light small" href="#!">Terms</a>
+                            <span class="text-white mx-1">&middot;</span>
+                            <a class="link-light small" href="#!">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         {% endblock %}
     </body>
 </html>
