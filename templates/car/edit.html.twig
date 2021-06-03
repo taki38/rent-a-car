@@ -6,37 +6,51 @@
             min-height: 90vh;
         }
     </style>
+
     <div class="container full p-5">
+        {% if (app.user.id == user) %}
+                <h1 class="text-center mb-5">Modifier {{ form.name.vars.value }}</h1>
 
-        <h1 class="text-center mb-5">Modifier {{ form.name.vars.value }}</h1>
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
 
-        <div class="row">
-            <div class="col-sm-6 ">
-                {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.Places) }}
+                        {{ form_row(form.luggage) }}
 
-                {{ form_row(form.name) }}
-                {{ form_row(form.Places) }}
-                {{ form_row(form.luggage) }}
+                    </div>
 
+                    <div class="col-sm-6">
+                        {{ form_row(form.fuel) }}
+                        {{ form_row(form.gearBox) }}
+                        {{ form_row(form.type) }}
+
+                    </div>
+
+                </div>
+                <div class="text-center mt-5">
+                    {%  if form.Image.vars.value.name is defined %}
+                        <img src="{{ asset('/images/cars/')~form.Image.vars.value.name }}" alt="Image du véhicule">
+                    {% endif %}
+
+                    {{ form_row(form.Image) }}
+
+                    <button type="submit" class="btn btn-success m-5">Valider</button>
+                </div>
+                {{ form_end(form) }}
+        {% else %}
+
+            <div class="alert alert-dismissible alert-warning">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <h4 class="alert-heading">Vous n'avez pas la pocession de ce véhicule !!</h4>
+                <p>Impossible de le modifier</p>
+            </div>
+            <div class="text-center">
+                <a type="button" class="btn btn-danger text-decoration-none" href="{{ path('dashboard') }}">Retour à la page d'Accueil</a>
             </div>
 
-            <div class="col-sm-6">
-                {{ form_row(form.fuel) }}
-                {{ form_row(form.gearBox) }}
-                {{ form_row(form.type) }}
-
-            </div>
-
-        </div>
-        <div class="text-center mt-5">
-            {%  if form.Image.vars.value.name is defined %}
-                <img src="{{ asset('/images/cars/')~form.Image.vars.value.name }}" alt="Image du véhicule">
-            {% endif %}
-
-            {{ form_row(form.Image) }}
-
-            <button type="submit" class="btn btn-success m-5">Valider</button>
-        </div>
-        {{ form_end(form) }}
+        {% endif %}
     </div>
+
 {% endblock %}

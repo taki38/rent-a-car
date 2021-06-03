@@ -56,6 +56,11 @@ class Car
      */
     private $type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cars")
+     */
+    private $User;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -141,6 +146,18 @@ class Car
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }

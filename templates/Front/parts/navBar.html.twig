@@ -82,6 +82,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ app.user.firstname }}</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                         <li><a class="dropdown-item" href="">Mon compte</a></li>
+                        <li><a class="dropdown-item" href="{{ path('user_cars') }}">Mes véhicules</a></li>
                         <li><a class="dropdown-item" href="{{ path('car_add') }}">Ajouter une voiture</a></li>
                         <li><a class="dropdown-item" href="{{ path('app_logout') }}">Me déconnecter</a></li>
                     </ul>

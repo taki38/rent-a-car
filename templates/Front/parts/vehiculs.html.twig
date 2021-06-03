@@ -1,0 +1,64 @@
+
+<!-- Page Content-->
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div id="voitures" class="text-center mb-5">
+            <h1 class="fw-bolder text-warning">Voitures</h1>
+            <p class="lead fw-normal text-muted mb-0">Company portfolio</p>
+        </div>
+        <div class="row gx-5">
+            {% for car in cars %}
+                {% if ( car.type == 'Voiture') %}
+                    <div class="col-lg-6">
+                        <div class="text-center">
+                            <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
+                        </div>
+                        <div class="position-relative text-center mb-5">
+                            {% if car.image.name is defined %}
+                                <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
+                            {% else %}
+                                <p>Pas d'images</p>
+                            {% endif %}
+
+                            <div class="text-center">
+                                {% if is_granted('ROLE_USER') and app.user.id == car.user.id %}
+                                    <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
+                                    <a type="button" class="btn btn-danger" href="{{ path('car_add') }}"><i class="fas fa-trash-alt"></i></a>
+                                {% endif%}
+                            </div>
+                        </div>
+                    </div>
+                {% endif%}
+            {% endfor %}
+        </div>
+        <div id="utilitaires" class="text-center mb-5">
+            <h1 class="fw-bolder text-warning">Utilitaire</h1>
+            <p class="lead fw-normal text-muted mb-0">Company portfolio</p>
+        </div>
+        <div class="row gx-5">
+            {% for car in cars %}
+                {% if (car.type == 'Utilitaire') %}
+                    <div class="col-lg-6">
+                        <div class="text-center">
+                            <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
+                        </div>
+                        <div class="position-relative text-center mb-5">
+                            {% if car.image.name is defined %}
+                                <img class="img-fluid rounded-3 mb-3 " src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
+                            {% else %}
+                                <p>Pas d'images</p>
+                            {% endif %}
+                            <div class="text-center">
+
+                                {% if is_granted('ROLE_USER') and app.user.id == car.user.id %}
+                                    <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
+                                    <a type="button" class="btn btn-danger" href="{{ path('car_add') }}"><i class="fas fa-trash-alt"></i></a>
+                                {% endif%}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

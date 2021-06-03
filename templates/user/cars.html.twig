@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <header class="bg-light py-5">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center justify-content-center">
+                <div class="col-lg-8 col-xl-7 col-xxl-6">
+                    <div class="my-5 text-center text-xl-start">
+                        <h1 class="display-5 fw-bolder text-dark mb-2">Mes véhicules</h1>
+                        <p class="lead fw-normal text-dark-50 mb-4"> Vous avez actuellement {{ cars|length}} véhicules disponibles</p>
+                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                            <a class="btn btn-outline-warning btn-lg px-4 me-sm-3" href="#voitures">Mes Voitures</a>
+                            <a class="btn btn-outline-warning btn-lg px-4" href="#utilitaires">Mes Utilitaires</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+
+                    <img src="{{ asset('images/caroussel/car3.JPEG') }}" class="d-block w-100" alt="...">
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="py-5">
+        <div class="container">
+            <div id="voitures" class="text-center mb-5">
+                <h1 class="fw-bolder text-warning">Mes Voitures</h1>
+            </div>
+            <div class="row gx-5">
+                {% for car in cars %}
+                    {% if ( car.type == 'Voiture') %}
+                        <div class="col-lg-6">
+                            <div class="text-center">
+                                <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
+                            </div>
+                            <div class="position-relative text-center mb-5">
+                                {% if car.image.name is defined %}
+                                    <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
+                                {% else %}
+                                    <p>Pas d'images</p>
+                                {% endif %}
+
+                                <div class="text-center">
+                                    {% if (app.user.id == car.user.id) %}
+                                        <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
+                                        <a type="button" class="btn btn-danger" href="{{ path('car_add') }}"><i class="fas fa-trash-alt"></i></a>
+                                    {% endif%}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif%}
+                {% endfor %}
+            </div>
+            <div id="utilitaires" class="text-center mb-5">
+                <h1 class="fw-bolder text-warning">Mes Utilitaire</h1>
+            </div>
+            <div class="row gx-5">
+                {% for car in cars %}
+                    {% if (car.type == 'Utilitaire') %}
+                        <div class="col-lg-6">
+                            <div class="text-center">
+                                <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
+                            </div>
+                            <div class="position-relative text-center mb-5">
+                                {% if car.image.name is defined %}
+                                    <img class="img-fluid rounded-3 mb-3 " src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
+                                {% else %}
+                                    <p>Pas d'images</p>
+                                {% endif %}
+                                <div class="text-center">
+                                    <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
+                                    <a type="button" class="btn btn-danger" href="{{ path('car_add') }}"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
