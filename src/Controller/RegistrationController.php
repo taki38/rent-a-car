@@ -48,7 +48,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Your email address has been verified.');
+            $this->addFlash('success', 'Votre enregistrement a été effectué avec succès.');
 
 
             return $guardHandler->authenticateUserAndHandleSuccess(
