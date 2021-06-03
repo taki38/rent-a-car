@@ -56,7 +56,7 @@ class CarController extends AbstractController
             return $this->redirectToRoute('dashboard');
 
         }
-        return $this->render('car/add.html.twig', [
+        return $this->render('car/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }

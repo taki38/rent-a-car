@@ -8,9 +8,10 @@
     </style>
     <div class="container full p-5">
 
+        <h1 class="text-center mb-5">Modifier {{ form.name.vars.value }}</h1>
+
         <div class="row">
-            <h1>Modifier un véhicule</h1>
-            <div class="col-sm-6">
+            <div class="col-sm-6 ">
                 {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
 
                 {{ form_row(form.name) }}
@@ -27,8 +28,13 @@
             </div>
 
         </div>
-        {{ form_row(form.Image) }}
-        <div class="text-center">
+        <div class="text-center mt-5">
+            {%  if form.Image.vars.value.name is defined %}
+                <img src="{{ asset('/images/cars/')~form.Image.vars.value.name }}" alt="Image du véhicule">
+            {% endif %}
+
+            {{ form_row(form.Image) }}
+
             <button type="submit" class="btn btn-success m-5">Valider</button>
         </div>
         {{ form_end(form) }}
