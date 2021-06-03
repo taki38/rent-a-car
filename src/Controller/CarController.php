@@ -25,6 +25,7 @@ class CarController extends AbstractController
             $car = $form->getData();
             $image = $car->getImage();
             $image -> setPath($path);
+            $car->setUser($this->getUser()) ;
             $entityManager->persist($car);
             $entityManager->flush();
 
@@ -50,6 +51,7 @@ class CarController extends AbstractController
             $car = $form->getData();
             $image = $car->getImage();
             $image -> setPath($path);
+            $car->setUser($this->getUser()) ;
             $entityManager->flush();
             $this->addFlash('success', 'Votre voiture a été modifié ave succès');
 
@@ -58,6 +60,21 @@ class CarController extends AbstractController
         }
         return $this->render('car/edit.html.twig', [
             'form' => $form->createView(),
+            'user' => $car->getUser()->getId()
+        ]);
+    }
+
+    /**
+     * @Route("/user/cars", name="user_cars")
+     */
+    public function cars(): Response
+    {
+        $user = $this->getUser();
+        $cars = $user->getCars();
+
+
+        return $this->render('user/cars.html.twig', [
+            'cars' => $cars,
         ]);
     }
 }
