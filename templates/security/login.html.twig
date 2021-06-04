@@ -4,6 +4,12 @@
 
 
 {% block body %}
+    <style>
+        .full {
+            position: relative;
+            min-height: 90vh;
+        }
+    </style>
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -24,7 +30,7 @@
 
         </head>
         <body>
-        <div class="container p-5">
+        <div class="container full p-5">
             <div class="d-flex justify-content-center h-100">
                 <div class="card">
                     <div class="card-header">

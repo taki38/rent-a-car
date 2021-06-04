@@ -21,10 +21,16 @@
                             {% endif %}
 
                             <div class="text-center">
-                                {% if is_granted('ROLE_USER') and app.user.id == car.user.id %}
-                                    <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
-                                    <a type="button" class="btn btn-danger" href="{{ path('car_add') }}"><i class="fas fa-trash-alt"></i></a>
-                                {% endif%}
+                                {% if is_granted('ROLE_USER')  %}
+                                    {% if app.user.id == car.user.id %}
+                                        <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
+                                        <a type="button" class="btn btn-danger" href="{{ path('car_add') }}"><i class="fas fa-trash-alt"></i></a>
+                                    {% else %}
+                                        <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                    {% endif%}
+                                {% else %}
+                                    <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -49,11 +55,16 @@
                                 <p>Pas d'images</p>
                             {% endif %}
                             <div class="text-center">
-
-                                {% if is_granted('ROLE_USER') and app.user.id == car.user.id %}
-                                    <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
-                                    <a type="button" class="btn btn-danger" href="{{ path('car_add') }}"><i class="fas fa-trash-alt"></i></a>
-                                {% endif%}
+                                {% if is_granted('ROLE_USER')  %}
+                                    {% if app.user.id == car.user.id %}
+                                        <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
+                                        <a type="button" class="btn btn-danger" href="{{ path('car_add') }}"><i class="fas fa-trash-alt"></i></a>
+                                    {% else %}
+                                        <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                    {% endif%}
+                                {% else %}
+                                        <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
