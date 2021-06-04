@@ -48,6 +48,7 @@ class Car
 
     /**
      * @ORM\OneToOne(targetEntity=CarImage::class, cascade={"persist", "remove"})
+     * @Assert\NotBlank(message="Veuillez soumettre une image pour ce véhicule !")
      */
     private $Image;
 

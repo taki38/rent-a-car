@@ -46,7 +46,9 @@ class CarType extends AbstractType
                     'Utilitaire' => 'Utilitaire'
                 ]
             ])
-            ->add('Image',CarImageType::class)
+            ->add('Image',CarImageType::class,[
+                'required' => false,
+            ])
         ;
     }
 
