@@ -29,7 +29,7 @@ class CarController extends AbstractController
             $entityManager->persist($car);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre voiture a été ajoutée ave succès');
+            $this->addFlash('success', 'Votre véhicule a été ajoutée ave succès');
             return $this->redirectToRoute('dashboard');
 
         }
@@ -53,7 +53,7 @@ class CarController extends AbstractController
             $image -> setPath($path);
             $car->setUser($this->getUser()) ;
             $entityManager->flush();
-            $this->addFlash('success', 'Votre voiture a été modifié ave succès');
+            $this->addFlash('success', 'Votre véhicule a été modifié ave succès');
 
             return $this->redirectToRoute('dashboard');
 
@@ -62,6 +62,22 @@ class CarController extends AbstractController
             'form' => $form->createView(),
             'user' => $car->getUser()->getId()
         ]);
+    }
+
+    /**
+     * @Route("/car/delete/{id}", name="car_delete")
+     */
+    public function delete(EntityManagerInterface $entityManager, Request $request, Car $car): Response
+    {
+        if ($this->getUser() == $car->getUser()){
+
+
+        $entityManager->remove($car);
+        $entityManager->flush();
+        $this->addFlash('success', 'Votre véhicule a été supprimé ave succès');
+        }
+
+        return $this->redirectToRoute('dashboard');
     }
 
     /**

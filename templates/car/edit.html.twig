@@ -31,7 +31,7 @@
                 </div>
                 <div class="text-center mt-5">
                     {%  if form.Image.vars.value.name is defined %}
-                        <img src="{{ asset('/images/cars/')~form.Image.vars.value.name }}" alt="Image du véhicule">
+                        <img class="img-fluid rounded-3 mb-3" width="300px" src="{{ asset('/images/cars/')~form.Image.vars.value.name }}" alt="Photo du véhicule" />
                     {% endif %}
 
                     {{ form_row(form.Image) }}
