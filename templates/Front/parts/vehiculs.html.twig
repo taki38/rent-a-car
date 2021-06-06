@@ -2,13 +2,16 @@
 <!-- Page Content-->
 <section class="py-5">
     <div class="container px-5 my-5">
-        <div id="voitures" class="text-center mb-5">
-            <h1 class="fw-bolder text-warning">Voitures</h1>
-            <p class="lead fw-normal text-muted mb-0">Company portfolio</p>
-        </div>
+
         <div class="row gx-5">
+            {% if cars|length > 0 %}
+            <div id="voitures" class="text-center ">
+                <h1 class="fw-bolder text-warning">Voitures</h1>
+            </div>
+            {% endif %}
             {% for car in cars %}
                 {% if ( car.type == 'Voiture') %}
+
                     <div class="col-lg-6">
                         <div class="text-center">
                             <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
@@ -39,13 +42,16 @@
                 {% endif%}
             {% endfor %}
         </div>
-        <div id="utilitaires" class="text-center mb-5">
-            <h1 class="fw-bolder text-warning">Utilitaire</h1>
-            <p class="lead fw-normal text-muted mb-0">Company portfolio</p>
-        </div>
+
         <div class="row gx-5">
+            {% if cars|length >0 %}
+            <div id="utilitaires" class="text-center">
+                <h1 class="fw-bolder text-warning">Utilitaire</h1>
+            </div>
+            {% endif %}
             {% for car in cars %}
                 {% if (car.type == 'Utilitaire') %}
+
                     <div class="col-lg-6">
                         <div class="text-center">
                             <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>

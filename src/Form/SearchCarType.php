@@ -2,22 +2,20 @@
 
 namespace App\Form;
 
-use App\Entity\Car;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CarType extends AbstractType
+class SearchCarType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class,[
-                'label' => 'Modèle'
-            ])
+
             ->add('fuel', ChoiceType::class,[
                 'label' => 'Carburant',
                 'choices' => [
@@ -27,7 +25,7 @@ class CarType extends AbstractType
                 ]
             ])
             ->add('Places', ChoiceType::class,[
-                'label' => 'Nombre de places',
+                'label' => 'Nb de places',
                 'choices' => [
                     '1' => 1,
                     '2' => 2,
@@ -43,10 +41,10 @@ class CarType extends AbstractType
                 'choices'  => [
                     'Manuelle' => 'Manuelle',
                     'Automatique' => 'Automatique',
-                    ]
+                ]
             ])
             ->add('luggage', ChoiceType::class,[
-                'label' => 'Nombres de baggages',
+                'label' => 'Nb de baggages',
                 'choices' => [
                     '1' => 1,
                     '2' => 2,
@@ -64,16 +62,13 @@ class CarType extends AbstractType
                     'Utilitaire' => 'Utilitaire'
                 ]
             ])
-            ->add('Image',CarImageType::class,[
-                'required' => false,
-            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Car::class,
+            // Configure your form options here
         ]);
     }
 }

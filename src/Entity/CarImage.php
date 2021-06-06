@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CarImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=CarImageRepository::class)
@@ -23,7 +25,9 @@ class CarImage
      */
     private $name;
 
+
     private $file;
+
 
     private $path;
 

@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche!{% endblock %}
+
+{% block body %}
+    <style>
+        .full {
+            position: relative;
+            min-height: 85vh;
+        }
+    </style>
+
+    <div class="container full p-5">
+
+        {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+        <h1 class="mb-5">Recherche avancée</h1>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.Places) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.luggage) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.type) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.fuel) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.gearBox) }}
+            </div>
+            <div class="col d-flex align-items-end">
+                <button type="submit" class="btn btn-info ">Rechercher</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+        {% if app.request.method == 'POST' and cars|length == 0 %}
+            <div class="alert alert-dismissible alert-danger mt-5">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Aucun véhicule trouvé !</strong> <a href="#" class="alert-link">Changez les critéres</a> et réessayez de nouveau.
+            </div>
+
+        {% else %}
+
+            <section class="py-5">
+                <div class="container px-5 my-5">
+
+                    <div class="row gx-5">
+                        {% if  app.request.method == 'POST' and type == "Voiture" %}
+                            <div id="voitures" class="text-center ">
+                                <h1 class="fw-bolder text-warning">Voitures</h1>
+                            </div>
+                        {% endif %}
+                        {% if app.request.method == 'POST' and type == "Utilitaire" %}
+                            <div id="utilitaires" class="text-center ">
+                                <h1 class="fw-bolder text-warning">Utilitaires</h1>
+                            </div>
+                        {% endif %}
+                        {% for car in cars %}
+                            {% if ( car.type == 'Voiture') %}
+
+                                <div class="col-lg-6">
+                                    <div class="text-center">
+                                        <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
+                                    </div>
+                                    <div class="position-relative text-center mb-5">
+                                        {% if car.image.name is defined %}
+                                            <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
+                                        {% else %}
+                                            <p>Pas d'images</p>
+                                        {% endif %}
+
+                                        <div class="text-center">
+                                            {% if is_granted('ROLE_USER')  %}
+                                                {% if app.user.id == car.user.id %}
+                                                    <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
+                                                    <a type="button" class="btn btn-danger" href="{{ path('car_delete', {'id': car.id }) }}"><i class="fas fa-trash-alt"></i></a>
+                                                {% else %}
+                                                    <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                                    <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></i></a>
+                                                {% endif%}
+                                            {% else %}
+                                                <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                                <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif%}
+                        {% endfor %}
+                    </div>
+
+                    <div class="row gx-5">
+
+                        {% for car in cars %}
+                            {% if (car.type == 'Utilitaire') %}
+
+                                <div class="col-lg-6">
+                                    <div class="text-center">
+                                        <a class="h3 text-dark text-decoration-none fw-bold " href="">{{ car.name }}</a>
+                                    </div>
+                                    <div class="position-relative text-center mb-5">
+                                        {% if car.image.name is defined %}
+                                            <img class="img-fluid rounded-3 mb-3 " src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
+                                        {% else %}
+                                            <p>Pas d'images</p>
+                                        {% endif %}
+                                        <div class="text-center">
+                                            {% if is_granted('ROLE_USER')  %}
+                                                {% if app.user.id == car.user.id %}
+                                                    <a type="button" class="btn btn-info" href="{{ path('car_edit', {'id': car.id }) }}" ><i class="fas fa-edit "></i></a>
+                                                    <a type="button" class="btn btn-danger" href="{{ path('car_delete', {'id': car.id }) }}"><i class="fas fa-trash-alt"></i></a>
+                                                {% else %}
+                                                    <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                                    <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></i></a>
+                                                {% endif%}
+                                            {% else %}
+                                                <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                                <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+        {% endif %}
+    </div>
+{% endblock %}

@@ -47,4 +47,22 @@ class CarRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function searchCar($criteria)
+    {
+        return $this->createQueryBuilder('c')
+
+            ->Where('c.type = :type')
+            ->setParameter('type', $criteria['type'])
+            ->andWhere('c.fuel = :fuel')
+            ->setParameter('fuel', $criteria['fuel'])
+            ->andWhere('c.luggage = :luggage')
+            ->setParameter('luggage', $criteria['luggage'])
+            ->andWhere('c.Places = :Places')
+            ->setParameter('Places', $criteria['Places'])
+            ->andWhere('c.gearBox = :gearBox')
+            ->setParameter('gearBox', $criteria['gearBox'])
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
