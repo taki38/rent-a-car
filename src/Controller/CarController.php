@@ -54,7 +54,6 @@ class CarController extends AbstractController
             $car->setUser($this->getUser()) ;
             $entityManager->flush();
             $this->addFlash('success', 'Votre véhicule a été modifié ave succès');
-
             return $this->redirectToRoute('dashboard');
 
         }

@@ -26,8 +26,17 @@ class CarType extends AbstractType
                     'Hybride' => 'Hybride'
                 ]
             ])
-            ->add('Places', IntegerType::class,[
-                'label' => 'Nombre de places'
+            ->add('Places', ChoiceType::class,[
+                'label' => 'Nombre de places',
+                'choices' => [
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                    '6' => 6,
+                    '7' => 7,
+                ]
             ])
             ->add('gearBox', ChoiceType::class,[
                 'label' => 'Boite Vitesse',
@@ -36,8 +45,17 @@ class CarType extends AbstractType
                     'Automatique' => 'Automatique',
                     ]
             ])
-            ->add('luggage', IntegerType::class,[
-                'label' => 'Nombres de baggages'
+            ->add('luggage', ChoiceType::class,[
+                'label' => 'Nombres de baggages',
+                'choices' => [
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                    '6' => 6,
+                    '7' => 7,
+                ]
             ])
             ->add('type', ChoiceType::class,[
                 'label' => 'Type',
