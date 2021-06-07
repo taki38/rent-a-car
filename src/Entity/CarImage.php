@@ -98,7 +98,6 @@ class CarImage
         $name = $this->createName();
         $this->setName($name);
         $this->file->move($this->path, $name);
-
     }
 
     private function createName()

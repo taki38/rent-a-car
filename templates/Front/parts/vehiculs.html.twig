@@ -20,7 +20,8 @@
                             {% if car.image.name is defined %}
                                 <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
                             {% else %}
-                                <p>Pas d'images</p>
+                                {# Si le véhicule n'a pas d'image j'ai préféré en mettre une par défaut juste pour faire joli ! vous pouvez mettre à la place <p> Pas d'images ! </p>  #}
+                                <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/car1.jpeg')}}" alt="..." />
                             {% endif %}
 
                             <div class="text-center">
@@ -30,11 +31,13 @@
                                         <a type="button" class="btn btn-danger" href="{{ path('car_delete', {'id': car.id }) }}"><i class="fas fa-trash-alt"></i></a>
                                     {% else %}
                                         <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                                        <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></i></a>
+                                        <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                        <a type="button" class="btn btn-info" href="#"><i class="far fa-address-book"></i></a>
                                     {% endif%}
                                 {% else %}
                                     <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
                                     <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                    <a type="button" class="btn btn-info" href="#"><i class="far fa-address-book"></i></a>
                                 {% endif %}
                             </div>
                         </div>
@@ -60,7 +63,8 @@
                             {% if car.image.name is defined %}
                                 <img class="img-fluid rounded-3 mb-3 " src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
                             {% else %}
-                                <p>Pas d'images</p>
+                                {# Si le véhicule n'a pas d'image j'ai préféré en mettre une par défaut juste pour faire joli ! vous pouvez mettre à la place <p> Pas d'images ! </p>  #}
+                                <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/car1.jpeg')}}" alt="..." />
                             {% endif %}
                             <div class="text-center">
                                 {% if is_granted('ROLE_USER')  %}
@@ -69,11 +73,13 @@
                                         <a type="button" class="btn btn-danger" href="{{ path('car_delete', {'id': car.id }) }}"><i class="fas fa-trash-alt"></i></a>
                                     {% else %}
                                         <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                                        <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></i></a>
+                                        <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                        <a type="button" class="btn btn-info" href="#"><i class="far fa-address-book"></i></a>
                                     {% endif%}
                                 {% else %}
                                     <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
                                     <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                    <a type="button" class="btn btn-info" href="#"><i class="far fa-address-book"></i></a>
                                 {% endif %}
                             </div>
                         </div>

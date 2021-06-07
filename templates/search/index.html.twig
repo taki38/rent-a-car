@@ -79,11 +79,13 @@
                                                     <a type="button" class="btn btn-danger" href="{{ path('car_delete', {'id': car.id }) }}"><i class="fas fa-trash-alt"></i></a>
                                                 {% else %}
                                                     <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                                                    <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></i></a>
+                                                    <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                                    <a type="button" class="btn btn-info" href="#"><i class="far fa-address-book"></i></a>
                                                 {% endif%}
                                             {% else %}
                                                 <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
                                                 <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                                <a type="button" class="btn btn-info" href="#"><i class="far fa-address-book"></i></a>
                                             {% endif %}
                                         </div>
                                     </div>
@@ -114,11 +116,13 @@
                                                     <a type="button" class="btn btn-danger" href="{{ path('car_delete', {'id': car.id }) }}"><i class="fas fa-trash-alt"></i></a>
                                                 {% else %}
                                                     <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                                                    <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></i></a>
+                                                    <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                                    <a type="button" class="btn btn-info" href="#"><i class="far fa-address-book"></i></a>
                                                 {% endif%}
                                             {% else %}
                                                 <a type="button" class="btn btn-success" href="tel:{{ car.user.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
                                                 <a type="button" class="btn btn-secondary" href="mailto:{{ car.user.email }}"><i class="fas fa-envelope-square"></i></a>
+                                                <a type="button" class="btn btn-info" href="#"><i class="far fa-address-book"></i></a>
                                             {% endif %}
                                         </div>
                                     </div>
