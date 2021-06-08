@@ -1,0 +1,24 @@
+{% extends 'adminBase.html.twig' %}
+
+{% block title %} Utilisateur {% endblock %}
+
+{% block body %}
+    <div class="container p-5">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <h1>Tous les utilisateurs</h1>
+
+        <div class="row">
+            {% for user in users %}
+                    <div class="col-md-4">
+                        <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                            <div class="card-header text-dark">{{ user.firstname }}</div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ user.cars|length }} Véhicules disponibles </h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

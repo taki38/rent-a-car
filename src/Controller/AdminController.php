@@ -10,13 +10,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin/users", name="users")
+     * @Route("/admin", name="admin")
+     */
+    public function index(): Response
+    {
+        return $this->render('admin/index.html.twig', [
+        ]);
+    }
+
+    /**
+     * @Route("/admin/users", name="admin_users")
      */
     public function users(UserRepository $userRepository): Response
     {
         $users = $userRepository->findAll();
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
+        return $this->render('admin/users.html.twig', [
+            'users' => $users,
         ]);
     }
 }
