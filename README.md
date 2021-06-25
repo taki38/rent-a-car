@@ -14,10 +14,12 @@ Editez la ligne 18 du .env pour mettre vos informations
 
 $ php bin/console doctrine:database:create
 
+$ php bin/console doctrine:make:migration
+
 $ php bin/console doctrine:migrations:migrate
 
 #Chargez les fixtures Fixtures
-$ php bin/console hautelook:fixtures:load --no-interaction
+$ php bin/console doctrine:fixtures:load
 
 #Lancer l'application application
 $ symfony server:start
