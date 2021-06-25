@@ -30,7 +30,7 @@
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('admin') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-grin-alt"></i>
                 </div>
@@ -83,9 +83,9 @@
                 <div id="collapseCommandes" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gérer les Véhicules</h6>
-                        <a class="collapse-item" href="">Tous les véhicules</a>
-                        <a class="collapse-item" href="">Voitures</a>
-                        <a class="collapse-item" href="">Utilitaires</a>
+                        <a class="collapse-item" href="{{ path('admin_cars') }}">Tous les véhicules</a>
+                        <a class="collapse-item" href="{{ path('admin_voitures') }}">Voitures</a>
+                        <a class="collapse-item" href="{{ path('admin_utilitaires') }}">Utilitaires</a>
                     </div>
                 </div>
             </li>

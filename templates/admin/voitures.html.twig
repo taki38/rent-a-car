@@ -1,0 +1,26 @@
+{% extends 'adminBase.html.twig' %}
+
+{% block title %} Voitures {% endblock %}
+
+{% block body %}
+    <div class="container p-5">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <h1>Toutes les voitures</h1>
+
+        <div class="row">
+            {% for car in cars %}
+                <div class="col-md-4">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                        <div class="card-header text-dark">{{ car.name }}</div>
+                        <div class="card-body">
+                            <h4 class="card-title"> Propréitaire : {{ car.user.firstname }} </h4>
+                            <p class="card-text">
+                                {{ car.fuel }} | {{ car.gearBox }} | {{ car.Places }} Places
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

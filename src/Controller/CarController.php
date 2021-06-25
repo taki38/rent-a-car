@@ -66,7 +66,7 @@ class CarController extends AbstractController
     /**
      * @Route("/car/delete/{id}", name="car_delete")
      */
-    public function delete(EntityManagerInterface $entityManager, Request $request, Car $car): Response
+    public function delete(EntityManagerInterface $entityManager, Car $car): Response
     {
         if ($this->getUser() == $car->getUser()){
 

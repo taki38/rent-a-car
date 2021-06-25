@@ -69,7 +69,8 @@
                                         {% if car.image.name is defined %}
                                             <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
                                         {% else %}
-                                            <p>Pas d'images</p>
+                                            {# Si le véhicule n'a pas d'image j'ai préféré en mettre une par défaut juste pour faire joli ! vous pouvez mettre à la place <p> Pas d'images ! </p>  #}
+                                            <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/car1.jpeg')}}" alt="..." />
                                         {% endif %}
 
                                         <div class="text-center">
@@ -107,7 +108,8 @@
                                         {% if car.image.name is defined %}
                                             <img class="img-fluid rounded-3 mb-3 " src="{{ asset('images/cars/') ~ car.image.name }}" alt="..." />
                                         {% else %}
-                                            <p>Pas d'images</p>
+                                            {# Si le véhicule n'a pas d'image j'ai préféré en mettre une par défaut juste pour faire joli ! vous pouvez mettre à la place <p> Pas d'images ! </p>  #}
+                                            <img class="img-fluid rounded-3 mb-3" src="{{ asset('images/cars/car1.jpeg')}}" alt="..." />
                                         {% endif %}
                                         <div class="text-center">
                                             {% if is_granted('ROLE_USER')  %}

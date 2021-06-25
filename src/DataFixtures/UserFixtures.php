@@ -27,7 +27,6 @@ class UserFixtures extends Fixture
     {
 
 
-
         $user1 = new User();
         $user1 -> setEmail('user@email.fr');
         $user1 -> setFirstname('User');
