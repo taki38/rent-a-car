@@ -35,4 +35,3 @@ Utilisateur avec ROLE_ADMIN
 email : admin@email.fr / password : 123456789
 
 
-# Si vous souhaitez devenir un développeur professionnel je vous recommande fortement : https://www.smaine.me/
